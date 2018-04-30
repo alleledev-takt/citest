@@ -1,0 +1,16 @@
+# See haskell/Readme.md for details on this organization.
+resolver: lts-10.5
+local-bin-path: bin
+
+ghc-options:
+  # Applied only to those under the "packages" stanza below:
+  "$locals":
+    -threaded
+    -rtsopts
+    -with-rtsopts=-T
+    -Wall
+    -Wincomplete-uni-patterns
+    -Werror
+
+packages:
+  - haskell/simple-test

@@ -1,0 +1,95 @@
+# Haskell
+.conf
+*.o
+*.hi
+*.chi
+*.chs.h
+*.imports
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.config
+cabal.project.local
+cabal-dev
+# Generated automatically by hpack:
+*.cabal
+
+# Dirs
+metastore_db
+build
+.cabal-sandbox
+dist
+dist-*
+vendor
+.vagrant.d
+.stack-work
+bin
+!bin/*.hs
+/etc/tmp
+doc
+*.eventlog
+tmp/
+node_modules
+.vscode
+__snapshots__
+/javascript/platform-api/docs/
+# For configuring API server for local development:
+/javascript/platform-api/env.json
+
+
+# CTAGS
+TAGS
+tags
+htags
+ctags
+etags
+
+# Emacs/Vim
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+*.org
+.projectile
+.project
+
+# OSX
+.DS_Store
+
+# Certificates
+*.pem
+
+# Terraform
+.terraform
+*.plan
+*.tfstate
+*.tfstate.backup
+/terraform/tectonic/tectonic-license.txt
+/terraform/tectonic/config.json
+/terraform/tectonic/generated
+
+#intellij
+.idea
+
+# Python
+.venv
+*.egg-info
+*.pyc
+
+*.dyn_o
+*.dyn_hi
+.hpc
+.hsenv
+*.prof
+*.aux
+*.hp
+*.pyc
+#Ansible
+*.retry
+
+#Logs
+*.log
+
+#dat files
+*.dat

@@ -1,0 +1,27 @@
+name: citest
+version: 0.0.1.0
+synopsis: Playing with CI.
+description: See README
+maintainer: Allele Dev
+extra-source-files:
+  - README.md
+
+ghc-options:
+  - -Wall
+  - -Werror
+
+library:
+  source-dirs: src
+  exposed-modules: CITest.Core
+  dependencies:
+    - base
+
+tests:
+  simple-spec:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+      - base
+      - citest
+      - hedgehog >= 0.5
+      - text

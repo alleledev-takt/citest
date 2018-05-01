@@ -21,7 +21,7 @@ jobs:
 
   involved-test:
     docker:
-      -image: alleledev/debian-haskell
+      - image: alleledev/debian-haskell
     steps:
       - restore_cache:
           keys:

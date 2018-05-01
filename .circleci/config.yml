@@ -1,0 +1,28 @@
+version: 2.0
+jobs:
+  simple-test:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Install stack.
+          command: |
+            wget -qO- https://get.haskellstack.org/ | sh
+      - run:
+          name: Run tests.
+          command: |
+            cd project
+            stack test
+
+workflows:
+  version: 2
+  simple-workflow:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              - master
+    jobs:
+      - simple-test

@@ -2,18 +2,9 @@ version: 2.0
 jobs:
   simple-test:
     docker:
-      - image: debian@sha256:de3eac83cd481c04c5d6c7344cd7327625a1d8b2540e82a8231b5675cef0ae5f
+      - image: alleledev/debian-haskell
     steps:
       - checkout
-      - run:
-          name: Install deps.
-          command: |
-            apt-get update
-            apt-get install -y git ssh curl
-      - run:
-          name: Install stack.
-          command: |
-            curl -sSL https://get.haskellstack.org/ | sh
       - run:
           name: Run tests.
           command: |

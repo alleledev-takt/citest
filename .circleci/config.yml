@@ -47,13 +47,13 @@ workflows:
     jobs:
       - simple-test
 
-  # four-an-hour-workflow:
-  #   triggers:
-  #     - schedule:
-  #         cron: "15 * * * *"
-  #         filters:
-  #           branches:
-  #             only:
-  #               - develop
-  #   jobs:
-  #     - involved-test
+  four-an-hour-workflow:
+    triggers:
+      - schedule:
+          cron: "15 * * * *"
+          filters:
+            branches:
+              only:
+                - develop
+    jobs:
+      - involved-test

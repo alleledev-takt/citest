@@ -12,7 +12,7 @@ jobs:
           name: Run tests.
           command: |
             set -e
-            stack setup
+            echo $LANG
             stack test
       - save_cache:
           key: stack-deps

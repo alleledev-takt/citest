@@ -1,42 +1,44 @@
 version: 2.0
+
 jobs:
   simple-test:
     docker:
       - image: alleledev/debian-haskell
     steps:
-      - restore_cache:
-          keys:
-            - stack-deps
+      - *restore_stack_cache
       - checkout
       - run:
-          name: Run tests.
+          name: stack test simple-spec
           command: |
             set -e
             stack --no-terminal test citest:simple-spec
-      - save_cache:
-          key: stack-deps
-          paths:
-            - .stack
-            - ~/.stack
+      - *save_stack_cache
 
   involved-test:
     docker:
       - image: alleledev/debian-haskell
     steps:
-      - restore_cache:
-          keys:
-            - stack-deps
+      - *restore_stack_cache
       - checkout
       - run:
-          name: Run involved tests.
+          name: stack test involved-spec
           command: |
             set -e
             stack --no-terminal test citest:involved-spec
-      - save_cache:
-          key: stack-deps
-          paths:
-            - .stack
-            - ~/.stack
+      - *save_stack_cache
+
+  perf-test:
+    docker:
+      - image: alleledev/debian-haskell
+    steps:
+      - *restore_stack_cache
+      - checkout
+      - run:
+          name: stack bench
+          command: |
+            set -e
+            stack --no-terminal bench
+      - *save_stack_cache
 
 
 
@@ -45,8 +47,9 @@ workflows:
   simple-workflow:
     jobs:
       - simple-test
+      - perf-test
 
-  four-an-hour-workflow:
+  once-an-hour-workflow:
     triggers:
       - schedule:
           cron: "15 * * * *"
@@ -56,3 +59,17 @@ workflows:
                 - develop
     jobs:
       - involved-test
+
+references:
+
+  restore_stack_cache:
+    - restore_cache:
+        keys:
+          - stack-deps
+
+  save_stack_cache:
+    - save_cache:
+        key: stack-deps
+        paths:
+          - .stack
+          - ~/.stack

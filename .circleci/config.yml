@@ -6,10 +6,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install stack.
+          name: Install deps.
           command: |
             apt-get update
-            apt-get install curl
+            apt-get install git ssh curl
+      - run:
+          name: Install stack.
+          command: |
             curl -sSL https://get.haskellstack.org/ | sh
       - run:
           name: Run tests.

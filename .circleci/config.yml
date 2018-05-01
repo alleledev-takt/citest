@@ -18,11 +18,5 @@ jobs:
 workflows:
   version: 2
   simple-workflow:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              - develop
     jobs:
       - simple-test

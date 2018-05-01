@@ -1,12 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import Control.Monad
+
 import Hedgehog
 
 import CITest.Core
-
-void :: Monad m => m a -> m ()
-void f = f >> return ()
 
 main :: IO ()
 main =

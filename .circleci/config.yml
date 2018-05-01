@@ -12,7 +12,7 @@ jobs:
           name: Run tests.
           command: |
             set -e
-            stack --no-terminal test
+            stack --no-terminal test citest:simple-spec
       - save_cache:
           key: stack-deps
           paths:
@@ -31,8 +31,7 @@ jobs:
           name: Run involved tests.
           command: |
             set -e
-            stack --no-terminal test
-            stack --no-terminal test
+            stack --no-terminal test citest:involved-spec
       - save_cache:
           key: stack-deps
           paths:

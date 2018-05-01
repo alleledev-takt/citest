@@ -19,7 +19,16 @@ library:
 tests:
   simple-spec:
     main: Spec.hs
-    source-dirs: test
+    source-dirs: test/spec
+    dependencies:
+      - base
+      - citest
+      - hedgehog >= 0.5
+      - text
+
+  involved-spec:
+    main: Involved.hs
+    source-dirs: test/integration
     dependencies:
       - base
       - citest

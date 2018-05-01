@@ -1,5 +1,19 @@
 version: 2.0
 
+references:
+
+  restore_stack_cache:
+    - restore_cache:
+        keys:
+          - stack-deps
+
+  save_stack_cache:
+    - save_cache:
+        key: stack-deps
+        paths:
+          - .stack
+          - ~/.stack
+
 jobs:
   simple-test:
     docker:
@@ -59,17 +73,3 @@ workflows:
                 - develop
     jobs:
       - involved-test
-
-references:
-
-  restore_stack_cache:
-    - restore_cache:
-        keys:
-          - stack-deps
-
-  save_stack_cache:
-    - save_cache:
-        key: stack-deps
-        paths:
-          - .stack
-          - ~/.stack

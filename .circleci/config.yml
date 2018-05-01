@@ -11,8 +11,9 @@ jobs:
       - run:
           name: Run tests.
           command: |
-            ls
-            stack --no-terminal test
+            set -e
+            stack setup
+            stack test
       - save_cache:
           key: stack-deps
           paths:

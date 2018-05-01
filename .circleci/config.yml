@@ -17,6 +17,7 @@ jobs:
       - run:
           name: Run tests.
           command: |
+            ls
             cd citest
             stack test
 

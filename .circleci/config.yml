@@ -23,6 +23,6 @@ workflows:
           cron: "0 0 * * *"
           filters:
             branches:
-              - master
+              - develop
     jobs:
       - simple-test
